@@ -1,4 +1,4 @@
-package com.metabroadcast.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,11 +7,11 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.metabroadcast.machinelearning.math.MathFunction;
-import com.metabroadcast.machinelearning.math.MathFunctionSerializer;
+import com.metabroadcast.neuralnetwork.math.MathFunction;
+import com.metabroadcast.neuralnetwork.math.MathFunctionSerializer;
 
 /**
- * Provides a persistence method to save or load a {@link com.metabroadcast.machinelearning.FeedForwardNetwork}.
+ * Provides a persistence method to save or load a {@link com.metabroadcast.neuralnetwork.FeedForwardNetwork}.
  * This implementation uses gson to output the file to json.
  * 
  * @author james

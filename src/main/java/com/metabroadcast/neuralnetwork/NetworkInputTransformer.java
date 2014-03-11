@@ -1,4 +1,4 @@
-package com.metabroadcast.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 import java.util.List;
 

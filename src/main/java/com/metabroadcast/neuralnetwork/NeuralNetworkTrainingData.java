@@ -1,4 +1,4 @@
-package com.metabroadcast.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

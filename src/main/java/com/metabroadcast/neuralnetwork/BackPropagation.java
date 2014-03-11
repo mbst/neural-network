@@ -1,8 +1,8 @@
-package com.metabroadcast.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-import com.metabroadcast.machinelearning.math.DerivableFunction;
+import com.metabroadcast.neuralnetwork.math.DerivableFunction;
 
 /**
  * An implementation of {@link Trainer} that uses the backpropagation

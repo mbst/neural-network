@@ -1,4 +1,4 @@
-package com.metabroadcast.machinelearning.math;
+package com.metabroadcast.neuralnetwork.math;
 
 /**
  * A mathematical function that can be derived.
@@ -10,7 +10,7 @@ package com.metabroadcast.machinelearning.math;
 public interface DerivableFunction extends MathFunction {
     
     /**
-     * Returns the derivative of the {@link com.metabroadcast.machinelearning.math.MathFunction#process(double)} method.
+     * Returns the derivative of the {@link com.metabroadcast.neuralnetwork.math.MathFunction#process(double)} method.
      */
     double derivative(double input);
 }

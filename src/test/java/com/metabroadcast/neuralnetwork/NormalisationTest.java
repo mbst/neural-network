@@ -1,7 +1,7 @@
-package com.metabroadcast.canary.favourites.algorithm.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
-import static com.metabroadcast.machinelearning.math.Normaliser.denormalise;
-import static com.metabroadcast.machinelearning.math.Normaliser.normalise;
+import static com.metabroadcast.neuralnetwork.math.Normaliser.denormalise;
+import static com.metabroadcast.neuralnetwork.math.Normaliser.normalise;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;

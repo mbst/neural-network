@@ -1,4 +1,4 @@
-package com.metabroadcast.machinelearning.math;
+package com.metabroadcast.neuralnetwork.math;
 
 import java.io.Serializable;
 

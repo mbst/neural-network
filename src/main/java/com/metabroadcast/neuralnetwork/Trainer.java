@@ -1,7 +1,7 @@
-package com.metabroadcast.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 /**
- * Trains a {@link com.metabroadcast.machinelearning.FeedForwardNetwork}.
+ * Trains a {@link com.metabroadcast.neuralnetwork.FeedForwardNetwork}.
  * 
  * @author james
  */

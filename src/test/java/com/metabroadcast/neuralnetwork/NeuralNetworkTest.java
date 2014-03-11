@@ -1,4 +1,4 @@
-package com.metabroadcast.canary.favourites.algorithm.machinelearning;
+package com.metabroadcast.neuralnetwork;
 
 import static org.junit.Assert.fail;
 
@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.metabroadcast.machinelearning.BackPropagation;
-import com.metabroadcast.machinelearning.FeedForwardNetwork;
-import com.metabroadcast.machinelearning.Trainer;
+import com.metabroadcast.neuralnetwork.BackPropagation;
+import com.metabroadcast.neuralnetwork.FeedForwardNetwork;
+import com.metabroadcast.neuralnetwork.Trainer;
 
 public class NeuralNetworkTest {
     

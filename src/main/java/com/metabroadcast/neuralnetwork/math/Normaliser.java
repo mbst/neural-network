@@ -1,9 +1,9 @@
-package com.metabroadcast.machinelearning.math;
+package com.metabroadcast.neuralnetwork.math;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
- * Class for normalizing input for the {@link com.metabroadcast.machinelearning.FeedForwardNetwork}.
+ * Class for normalizing input for the {@link com.metabroadcast.neuralnetwork.FeedForwardNetwork}.
  * 
  * @author james
  */
