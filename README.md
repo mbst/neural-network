@@ -9,11 +9,11 @@ Usage
 -----
 
 You'll need to add a maven dependency
-**<dependency>
+'<dependency>
   <groupId>com.metabroadcast.neuralnetwork</groupId>
   <artifactId>neural-network</artifactId>
   <version>1.0</version>
-</dependency>**
+</dependency>'
 and include the MetaBroadcast repository: `http://mvn.metabroadcast.com/all'
 to access this library via maven.
 
