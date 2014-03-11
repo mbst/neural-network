@@ -125,7 +125,7 @@ public class FeedForwardNetwork {
         return Math.sqrt(meanError);
     }
 
-    public static double limiter(double num) {
+    private static double limiter(double num) {
         return Math.min(1, Math.max(0, num));
     }
     
