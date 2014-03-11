@@ -1,17 +1,15 @@
 package com.metabroadcast.machinelearning;
 
 import static com.google.common.base.Preconditions.checkArgument;
-
-import java.io.Serializable;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.metabroadcast.machinelearning.math.MathFunction;
+import com.metabroadcast.machinelearning.math.SineDerivableFunction;
 
-public abstract class FeedForwardNetwork implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class FeedForwardNetwork {
 
     private static final Logger log = LoggerFactory.getLogger(FeedForwardNetwork.class);
 
@@ -21,14 +19,11 @@ public abstract class FeedForwardNetwork implements Serializable {
     public double[] outputWeights;
     public double output;
     private boolean squashOutput;
+    private MathFunction mathFunction;
 
-    protected FeedForwardNetwork() {}
+    private FeedForwardNetwork() {}
 
-    protected FeedForwardNetwork(int inputNodes, int hiddenNodes) {
-        this(inputNodes, hiddenNodes, false);
-    }
-
-    protected FeedForwardNetwork(int inputNodes, int hiddenNodes, boolean squashOutput) {
+    private FeedForwardNetwork(int inputNodes, int hiddenNodes, boolean squashOutput, MathFunction mathFunction) {
 
         checkArgument(inputNodes > 0, "input nodes must be greater than 0");
         checkArgument(hiddenNodes > 0, "hidden nodes must be greater than 0");
@@ -39,6 +34,7 @@ public abstract class FeedForwardNetwork implements Serializable {
         this.hiddenLayer = new double[hiddenNodes + 1];
         this.outputWeights = new double[hiddenNodes + 1];
         this.squashOutput = squashOutput;
+        this.mathFunction = checkNotNull(mathFunction, "A math function is required"); 
     }
 
     protected void initialiseWeightsRandomly() {
@@ -70,7 +66,9 @@ public abstract class FeedForwardNetwork implements Serializable {
         return hiddenLayer.length;
     }
 
-    public abstract MathFunction getOutputFunction();
+    public MathFunction getOutputFunction() {
+        return mathFunction;
+    }
 
     public double computeOutput(double[] input) {
 
@@ -129,6 +127,58 @@ public abstract class FeedForwardNetwork implements Serializable {
 
     public static double limiter(double num) {
         return Math.min(1, Math.max(0, num));
+    }
+    
+    public static Builder builder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        
+        private int inputNodes;
+        private int hiddenNodes;
+        private boolean squashOutput;
+        private MathFunction outputFunction;
+        
+        public Builder withInputNodes(int inputNodes) {
+            this.inputNodes = inputNodes;
+            return this;
+        }
+        
+        public Builder withHiddenNodes(int hiddenNodes) {
+            this.hiddenNodes = hiddenNodes;
+            return this;
+        }
+        
+        public Builder squashOutput() {
+            this.squashOutput = true;
+            return this;
+        }
+        
+        public Builder withSineFunction() {
+            this.outputFunction = new SineDerivableFunction();
+            return this;
+        }
+        
+        /**
+         * Builds and distributes the weights in the network randomly.
+         * Use the {@link #buildAndDistributeWeights(double)} when testing.
+         */
+        public FeedForwardNetwork buildAndRandomlyDistributeWeights() {
+            FeedForwardNetwork network = new FeedForwardNetwork(inputNodes, hiddenNodes, squashOutput, outputFunction);
+            network.initialiseWeightsRandomly();
+            return network;
+        }
+        
+        /**
+         * When testing, you will want to remove the random factor to ensure unit tests are consistent.
+         * Use this method to assign the same weight across all of the network on initialization.
+         */
+        public FeedForwardNetwork buildAndDistributeWeights(double startingWeight) {
+            FeedForwardNetwork network = new FeedForwardNetwork(inputNodes, hiddenNodes, squashOutput, outputFunction);
+            network.initialiseWeightsToSetAmount(startingWeight);
+            return network;
+        }
     }
 
 }

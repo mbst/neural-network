@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import com.metabroadcast.machinelearning.BackPropagation;
 import com.metabroadcast.machinelearning.FeedForwardNetwork;
-import com.metabroadcast.machinelearning.SineFeedForwardNetwork;
 import com.metabroadcast.machinelearning.Trainer;
 
 public class NeuralNetworkTest {
@@ -17,9 +16,10 @@ public class NeuralNetworkTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testWhenInputLongerThanInputLayerThrowError() {
-        FeedForwardNetwork network = SineFeedForwardNetwork.builder()
+        FeedForwardNetwork network = FeedForwardNetwork.builder()
                 .withInputNodes(2)
                 .withHiddenNodes(1)
+                .withSineFunction()
                 .buildAndRandomlyDistributeWeights();
         double largeTrainingSet[] = { 1, 0, 0, 0 };
 
@@ -28,9 +28,10 @@ public class NeuralNetworkTest {
 
     @Test
     public void testLearnsAnd() {
-        FeedForwardNetwork network = SineFeedForwardNetwork.builder()
+        FeedForwardNetwork network = FeedForwardNetwork.builder()
                 .withInputNodes(3)
                 .withHiddenNodes(1)
+                .withSineFunction()
                 .buildAndDistributeWeights(0.5);
 
         double trainingAndInput[][] = { { 1, 1, 1 }, { 0, 0, 0 }, { 1, 0, 1 }, { 0, 1, 0 } };
