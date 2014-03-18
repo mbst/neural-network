@@ -25,7 +25,7 @@ public class MathFunctionSerializer implements JsonSerializer<MathFunction>, Jso
         } else if (type.equals(TAN)) {
             return new TanDerivableFunction();
         }
-        throw new JsonParseException("Unknown math function");
+        throw new JsonParseException("Unknown math function " + type);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class MathFunctionSerializer implements JsonSerializer<MathFunction>, Jso
         } else if (src instanceof TanDerivableFunction) {
             return new JsonPrimitive(TAN);
         }
-        throw new IllegalArgumentException("Unknown math function");
+        throw new IllegalArgumentException("Cannot serialize math function " + src);
     }
 
 }
