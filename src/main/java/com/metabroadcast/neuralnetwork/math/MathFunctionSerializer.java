@@ -31,7 +31,7 @@ public class MathFunctionSerializer implements JsonSerializer<MathFunction>, Jso
     @Override
     public JsonElement serialize(MathFunction src, Type typeOfSrc, JsonSerializationContext context) {
         if (src instanceof SineDerivableFunction) {
-            return new JsonPrimitive("SINE");
+            return new JsonPrimitive(SIN);
         } else if (src instanceof TanDerivableFunction) {
             return new JsonPrimitive(TAN);
         }
